@@ -27,6 +27,7 @@ Player.prototype.update = function(dt) {
             this.y = 400;
         }
     }
+    this.checkCollisions();
 
 };
 
