@@ -1,8 +1,8 @@
 var Player = function(x,y) {
     this.x = x;
     this.y = y;
-    this.height = 50;
-    this.width = 150;
+    this.height = 80;
+    this.width = 70;
     this.speed = 100;
     this.lives = 3;
     this.score = 0;
@@ -21,6 +21,7 @@ Player.prototype.update = function(dt) {
     }
     if (this.y < 0 || this.y > 400) {
         if(this.y < 0){
+            this.lives--;
             this.reset();
         }
         else{
@@ -34,12 +35,15 @@ Player.prototype.update = function(dt) {
 Player.prototype.reset = function() {
         this.y = 400;
         this.x = 0;
-        this.lives = this.lives - 1;
-
+        console.log(this.lives);
         if (this.lives == 0) {
-            console.log('YOU LOSE!')
+            setTimeout (function() {
+            alert('YOU LOSE!');
+            },100);
         }
 };
+
+
 
 Player.prototype.checkCollisions = function() {
 
@@ -48,6 +52,15 @@ Player.prototype.checkCollisions = function() {
 
         //if (allEnemies[i].x < player.x + 171 && allEnemies[i].x +171 > player.x && allEnemies[i].y < player.y + 101 && 101 + allEnemies[i].y > player.y) {
             console.log("Collision!");
+            this.lives--;
+            this.reset();
+        }
+        else if ((player.x < heart.x + heart.width) && (player.x + player.width > heart.x) && (player.y < heart.y + heart.height) && (player.height + player.y > heart.y)) {
+
+        //if (allEnemies[i].x < player.x + 171 && allEnemies[i].x +171 > player.x && allEnemies[i].y < player.y + 101 && 101 + allEnemies[i].y > player.y) {
+            setTimeout (function() {
+            alert('YOU WIN!');
+            }, 100);
             this.reset();
         }
     }
@@ -78,20 +91,42 @@ Player.prototype.handleInput = function(direction) {
     ctx.strokeStyle = color;
     ctx.stroke();
 };
+
 Player.prototype.render = function() {
      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
+        drawBox(this.x + 5, this.y + 60, 85, 80, "blue");
+ };
 
 var player = new Player(0,400);
+
+var Heart = function(x,y) {
+    this.x = x;
+    this.y = y;
+    this.height = 50;
+    this.width = 50;
+    this.sprite = 'images/Heart.png';
+};
+
+Heart.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        drawBox(this.x + 5, this.y + 50, 95, 90, "blue");
+};
+
+//setTimeout (function() {
+  //  alert('YOU WIN!');
+//},
+//5000);
+
+
+var heart = new Heart(150,150);
 
 // Enemies our player must avoid
 var Enemy = function(x,y) {
     this.x = x;
     this.y = y;
     this.speed = 100;
-    this.height = 72;
-    this.width = 110;
+    this.height = 67;
+    this.width = 100;
 
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -118,7 +153,7 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-        drawBox(this.x, this.y + 77, 100, 67, "yellow");
+    drawBox(this.x, this.y + 77, 100, 67, "yellow");
 };
 // Now write your own player class
 // This class requires an update(), render() and
@@ -128,10 +163,10 @@ Enemy.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemy1 = new Enemy(100,100);
-var enemy2 = new Enemy(55,200);
-var enemy3 = new Enemy(90,300);
-var allEnemies = [enemy1,enemy2,enemy3];
+var enemy1 = new Enemy(10,10);
+var enemy2 = new Enemy(155,200);
+
+var allEnemies = [enemy1,enemy2];
 
 
 
