@@ -71,6 +71,13 @@ Player.prototype.handleInput = function(direction) {
     }
 };
 
+    function drawBox(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = color;
+    ctx.stroke();
+};
 Player.prototype.render = function() {
      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -111,6 +118,7 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        drawBox(this.x, this.y + 77, 100, 67, "yellow");
 };
 // Now write your own player class
 // This class requires an update(), render() and
