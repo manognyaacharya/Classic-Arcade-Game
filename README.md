@@ -10,5 +10,5 @@ This game consists of a Player and an Enemy (bug). The Player, in order to win t
 4. If the Player loses all three lives, then a message pops up saying 'YOU LOSE!'
 
 ## Resources
-**Website** Udacity - Object Oriented JavaScript and HTML5 Canvas
-**Website** MDN - Introduction to Object Oriented JavaScript
+1. **Website** Udacity - Object Oriented JavaScript and HTML5 Canvas
+2. **Website** MDN - Introduction to Object Oriented JavaScript
