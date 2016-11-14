@@ -55,7 +55,7 @@ Player.prototype.checkCollisions = function() {
             this.lives--;
             this.reset();
         }
-        else if ((thisr.x < heart.x + heart.width) && (this.x + this.width > heart.x) && (this.y < heart.y + heart.height) && (this.height + this.y > heart.y)) {
+        else if ((this.x < heart.x + heart.width) && (this.x + this.width > heart.x) && (this.y < heart.y + heart.height) && (this.height + this.y > heart.y)) {
 
         //if (allEnemies[i].x < player.x + 171 && allEnemies[i].x +171 > player.x && allEnemies[i].y < player.y + 101 && 101 + allEnemies[i].y > player.y) {
             setTimeout (function() {
