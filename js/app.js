@@ -48,14 +48,14 @@ Player.prototype.reset = function() {
 Player.prototype.checkCollisions = function() {
 
     for (var i = 0; i < allEnemies.length; i++) {
-        if ((player.x < allEnemies[i].x + allEnemies[i].width) && (player.x + player.width > allEnemies[i].x) && (player.y < allEnemies[i].y + allEnemies[i].height) && (player.height + player.y > allEnemies[i].y)) {
+        if ((this.x < allEnemies[i].x + allEnemies[i].width) && (this.x + this.width > allEnemies[i].x) && (this.y < allEnemies[i].y + allEnemies[i].height) && (this.height + this.y > allEnemies[i].y)) {
 
         //if (allEnemies[i].x < player.x + 171 && allEnemies[i].x +171 > player.x && allEnemies[i].y < player.y + 101 && 101 + allEnemies[i].y > player.y) {
             console.log("Collision!");
             this.lives--;
             this.reset();
         }
-        else if ((player.x < heart.x + heart.width) && (player.x + player.width > heart.x) && (player.y < heart.y + heart.height) && (player.height + player.y > heart.y)) {
+        else if ((thisr.x < heart.x + heart.width) && (this.x + this.width > heart.x) && (this.y < heart.y + heart.height) && (this.height + this.y > heart.y)) {
 
         //if (allEnemies[i].x < player.x + 171 && allEnemies[i].x +171 > player.x && allEnemies[i].y < player.y + 101 && 101 + allEnemies[i].y > player.y) {
             setTimeout (function() {
